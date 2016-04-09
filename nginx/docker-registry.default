@@ -1,6 +1,5 @@
 upstream docker-registry {
-  SetEnv servicename $servicename
-  server $servicename:5000;
+  server registry:5000;
 }
 server {
   listen 80;
