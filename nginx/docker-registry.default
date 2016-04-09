@@ -1,5 +1,5 @@
 upstream docker-registry {
-  server registry:5000;
+  server $service-name:$service-port;
 }
 server {
   listen 80;
@@ -34,18 +34,14 @@ server {
 	
 ldap_server ldap1 {
    #url ldap://ldap:389/ou=Users,dc=openstack,dc=org?uid?sub?(objectClass=inetOrgPerson);
-   url ldap://54.222.156.183:40389/ou=Users,dc=openstack,dc=org?uid?sub?(objectClass=inetOrgPerson)
-   binddn "admin@openstack.org"
-   binddn_passwd "password"
-   #binddn "TEST\\LDAPUSER";
-   #binddn_passwd LDAPPASSWORD;
+   url  $ldap-url
    group_attribute uniquemember;
    group_attribute_is_dn on;
    require valid_user;
 }
 
 server {
-    listen       3443;
+    listen       5000;
 
 	ssl on;
     ssl_certificate /data/server.crt;
