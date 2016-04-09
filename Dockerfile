@@ -30,5 +30,5 @@ RUN chmod +x /app/start.sh && mkdir /data
 
 VOLUME ["/data"]
 
-EXPOSE 80 443 3443
+EXPOSE 80 443 5000
 CMD /app/start.sh
