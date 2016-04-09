@@ -1,5 +1,5 @@
 FROM ubuntu:trusty
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND noninteractive servicename serviceport ldap
 
 MAINTAINER Larry Cai <larry.caiyu@gmail.com>
 
