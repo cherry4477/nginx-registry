@@ -1,5 +1,5 @@
 upstream docker-registry {
-  server $servicename:$serviceport;
+  server registry:5000;
 }
 server {
   listen 80;
@@ -34,7 +34,7 @@ server {
 	
 ldap_server ldap1 {
    #url ldap://ldap:389/ou=Users,dc=openstack,dc=org?uid?sub?(objectClass=inetOrgPerson);
-   url  $ldap
+   url  ldap://54.222.156.183:40389/ou=Users,dc=openstack,dc=org?uid?sub?(objectClass=inetOrgPerson)
    group_attribute uniquemember;
    group_attribute_is_dn on;
    require valid_user;
