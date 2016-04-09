@@ -1,5 +1,5 @@
 upstream docker-registry {
-  server $servicename: $serviceport;
+  server $servicename:5000;
 }
 server {
   listen 80;
