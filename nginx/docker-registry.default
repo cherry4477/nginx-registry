@@ -18,10 +18,9 @@ server {
     ssl_certificate_key /data/server.key;
   
     location / {
-		limit_except GET HEAD OPTIONS {
-			auth_basic            "Restricted";
-			auth_basic_user_file  /data/docker-registry.htpasswd;  # testuser:testpasswd & larrycai:passwd
-		}
+		
+		auth_basic            "Restricted";
+		auth_basic_user_file  /data/docker-registry.htpasswd;  # testuser:testpasswd & larrycai:passwd
 		proxy_set_header X-Forwarded-Proto $scheme;
 		proxy_set_header Host $http_host;
 		proxy_set_header X-Real-IP $remote_addr;
@@ -53,11 +52,10 @@ server {
     ssl_certificate_key /data/server.key;
   
     location / {
-		limit_except GET HEAD OPTIONS {
-			auth_ldap "LDAP Authorization Request";
-			auth_ldap_servers ldap1;
-			# auth_ldap_servers ldap2;
-		}
+		
+		auth_ldap "LDAP Authorization Request";
+		auth_ldap_servers ldap1;
+		
 		proxy_set_header X-Forwarded-Proto $scheme;
 		proxy_set_header Host $http_host;
 		proxy_set_header X-Real-IP $remote_addr;
