@@ -1,6 +1,5 @@
 FROM ubuntu:trusty
 ENV DEBIAN_FRONTEND noninteractive
-ENV servicename
 
 MAINTAINER Larry Cai <larry.caiyu@gmail.com>
 
