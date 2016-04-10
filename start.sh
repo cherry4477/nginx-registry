@@ -8,7 +8,7 @@ cp /app/nginx/docker-registry.default ${NGINX}/conf/docker-registry.default
 
 sed -i 's/#servicename:5000#/'$service'/g' ${NGINX}/conf/docker-registry.default
 #sed -i 's/#5000#/'$serviceport'/g' ${NGINX}/conf/docker-registry.default
-sed -i 's/#ldap://54.222.156.183:40389#/'$ldap'/g' ${NGINX}/conf/docker-registry.default
+sed -i 's/#ldap:\\/\\/54.222.156.183:40389#/'$ldap'/g' ${NGINX}/conf/docker-registry.default
 
 if [ ! -f ${DATA}/server.crt ];
 then
