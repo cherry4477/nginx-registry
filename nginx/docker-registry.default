@@ -4,18 +4,18 @@ upstream docker-registry {
 server {
   listen 80;
   location / {
-    rewrite ^(.*)$ https://$host$1 last;
+    rewrite ^(.*)$ http://$host$1 last;
   }
 }
 
 
 server {
     # https://github.com/docker/docker-/issues/747#issuecomment-64957116
-    listen 443;
+    #listen 443;
   
-	ssl on;
-    ssl_certificate /data/server.crt;
-    ssl_certificate_key /data/server.key;
+#	ssl on;
+#    ssl_certificate /data/server.crt;
+#    ssl_certificate_key /data/server.key;
   
     location / {
 		
