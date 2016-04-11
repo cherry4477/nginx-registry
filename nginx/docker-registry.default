@@ -35,8 +35,8 @@ server {
 ldap_server ldap1 {
    #url ldap://ldap:389/ou=Users,dc=openstack,dc=org?uid?sub?(objectClass=inetOrgPerson);
    url  ldapurl
-   binddn #username#
-   binddn_passwd #password#
+   binddn "#username#"
+   binddn_passwd "#password#"
    group_attribute uniquemember;
    group_attribute_is_dn on;
    require valid_user;
