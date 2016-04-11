@@ -4,7 +4,7 @@ upstream docker-registry {
 server {
   listen 80;
   location / {
-    rewrite ^(.*)$ http://$host$1 last;
+    rewrite ^(.*)$ https://$host$1 last;
   }
 }
 
@@ -45,9 +45,9 @@ ldap_server ldap1 {
 server {
     listen       3443;
 
-	ssl on;
-    ssl_certificate /data/server.crt;
-    ssl_certificate_key /data/server.key;
+	#ssl on;
+    #ssl_certificate /data/server.crt;
+    #ssl_certificate_key /data/server.key;
   
     location / {
 		
