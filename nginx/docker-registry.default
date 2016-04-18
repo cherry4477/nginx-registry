@@ -1,38 +1,7 @@
 upstream docker-registry {
   server #servicename:5000#;
 }
-server {
-  listen 80;
-  location / {
-    rewrite ^(.*)$ https://$host$1 last;
-  }
-}
 
-
-server {
-    # https://github.com/docker/docker-/issues/747#issuecomment-64957116
-    listen 443;
-  
-    ssl on;
-    ssl_certificate /app/1_registry.dataos.io_bundle.crt;
-    ssl_certificate_key /app/2_registry.dataos.io.key;
-  
-    location / {
-		
-		auth_basic            "Restricted";
-		auth_basic_user_file  /data/docker-registry.htpasswd;  # testuser:testpasswd & larrycai:passwd
-		add_header 'Docker-Distribution-Api-Version' 'registry/2.0' always;
-		proxy_set_header X-Forwarded-Proto $scheme;
-		proxy_set_header Host $http_host;
-		proxy_set_header X-Real-IP $remote_addr;
-		client_max_body_size 800M; # avoid HTTP 413 for large image uploads
-		chunked_transfer_encoding on; # required to avoid HTTP 411: see Issue #1486 (https://github.com/dotcloud/docker/issues/1486)
-		proxy_pass     http://docker-registry;
-    }
-}
-
-# LDAP http://www.allgoodbits.org/articles/view/29 
-	
 ldap_server ldap1 {
    #url ldap://ldap:389/ou=Users,dc=openstack,dc=org?uid?sub?(objectClass=inetOrgPerson);
    url  ldapurl
@@ -44,8 +13,7 @@ ldap_server ldap1 {
 }
 
 server {
-    listen       3443;
-
+    listen       443;
     ssl on;
     ssl_certificate /app/1_registry.dataos.io_bundle.crt;
     ssl_certificate_key /app/2_registry.dataos.io.key;
