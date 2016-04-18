@@ -21,6 +21,7 @@ server {
 		
 		auth_basic            "Restricted";
 		auth_basic_user_file  /data/docker-registry.htpasswd;  # testuser:testpasswd & larrycai:passwd
+		add_header 'Docker-Distribution-Api-Version' 'registry/2.0' always;
 		proxy_set_header X-Forwarded-Proto $scheme;
 		proxy_set_header Host $http_host;
 		proxy_set_header X-Real-IP $remote_addr;
