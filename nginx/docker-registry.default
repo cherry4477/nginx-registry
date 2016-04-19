@@ -25,7 +25,7 @@ server {
 		
 		add_header 'Docker-Distribution-Api-Version' 'registry/2.0' always;
 		
-		proxy_set_header X-Forwarded-Proto $scheme;
+		proxy_set_header X-Forwarded-Proto https;
 		proxy_set_header Host $http_host;
 		proxy_set_header X-Real-IP $remote_addr;
 		client_max_body_size 800M; # avoid HTTP 413 for large image uploads
